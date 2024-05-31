@@ -1,0 +1,17 @@
+:root {
+  --c-black: #000000;
+  --c-blue: #1820EF;
+  --c-red: #FF4E42;
+  --c-yellow: #FFC024;
+  --c-white: #FAFAED;
+  --f-family: "M PLUS Rounded 1c", sans-serif;
+  --f-medium: "500";
+  --f-extra-bold: "800";
+  --f-black: "900";
+  --space-xs:   8px;
+  --space-sm:   12px;
+  --space-md:   24px;
+  --space-lg:   32px;
+  --space-xl:   40px;
+  --space-xxl:  64px;
+}
