@@ -1,0 +1,95 @@
+body {
+  font-family: var(--f-family);
+}
+
+.header {
+  background-image: url('../assets/pattern-vermelha.svg');
+  background-color: var(--c-red);
+  background-size: 30em;
+  padding-bottom: 10px;
+
+}
+
+.header__wrapper__logo {
+  margin: 0 auto;
+  padding-top: var(--space-mmd);
+  width: fit-content;
+}
+
+.header__logo {
+  /* TODO: Scale logo */
+}
+
+.header__images {
+  display: flex;
+  justify-content: center;
+}
+
+.header__images__bg {
+  background-color: var(--c-dark-red);
+  width: 269px;
+  height: 269px;
+  border-radius: 999%;
+}
+
+.header__cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__cta__title--yellow {
+  color: var(--c-yellow);
+  font-weight: var(--f-black);
+  font-size: 3rem;
+}
+
+.header__cta__title--white {
+  color: var(--c-white);
+  font-weight: var(--f-black);
+  font-size: 7.5rem;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.header__cta__text {
+  padding: var(--space-md) var(--space-lg) var(--space-xxl);
+  color: var(--c-white);
+  font-size: 1rem;
+  font-weight: var(--f-medium);
+  text-align: center;
+}
+
+.header__cta__button {
+  display: none;
+}
+
+
+@media (min-width: 768px) {
+  .header__wrapper__logo {
+    margin: 0 var(--space-xl);
+    padding-top: var(--space-xl);
+    width: fit-content;
+  }
+
+  .header__cta__button {
+    display: block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    border-radius: 32px;
+    background-color: var(--c-blue);
+    color: var(--c-white);
+    text-transform: uppercase;
+    font-weight: var(--f-medium);
+    padding: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  .header__cta__button__arrow {
+    font-size: 1.5rem;
+    margin-left: var(--space-mmd);
+    color: var(--c-yellow);
+  }
+}

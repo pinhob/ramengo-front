@@ -11,29 +11,32 @@
     rel="stylesheet">
   <link rel="stylesheet" href="./src/css/reset.css">
   <link rel="stylesheet" href="./src/css/variables.css">
+  <link rel="stylesheet" href="./src/css/styles.css">
 </head>
 
 <body>
-  <section>
-    <header>
-      <a href="#">
-        <h1>ramenGo!</h1>
+  <section class="header">
+    <header class="header__wrapper__logo">
+      <a href="#" class="header__logo">
+        <img src="./src/assets/logo.svg" alt="">
       </a>
     </header>
 
-    <section>
+    <section class="header__images">
+      <div class="header__images__bg"></div>
       <img src="./src/assets/balao-azul.svg" alt="Blue Balloon">
       <img src="./src/assets/entregadora.svg" alt="Character">
       <img src="./src/assets/balao-amarelo.svg" alt="Yellow Balloon">
     </section>
 
-    <section>
-      <h2>ラ l メ ン</h2>
-      <h2>Go!</h2>
-      <p>Enjoy a good ramen in the comfort of your house. Create your own ramen and choose your favorite flavour
+    <section class="header__cta">
+      <h2 class="header__cta__title--yellow">ラ l メ ン</h2>
+      <h2 class="header__cta__title--white">Go!</h2>
+      <p class="header__cta__text">Enjoy a good ramen in the comfort of your house. Create your own ramen and choose
+        your favorite flavour
         combination!</p>
     </section>
-    <button>Order now</button>
+    <button class="header__cta__button">Order now <span class="header__cta__button__arrow">→</span></button>
   </section>
 
   <main>
