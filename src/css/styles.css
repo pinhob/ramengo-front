@@ -7,7 +7,6 @@ body {
   background-color: var(--c-red);
   background-size: 30em;
   padding-bottom: 10px;
-
 }
 
 .header__wrapper__logo {
@@ -16,18 +15,10 @@ body {
   width: fit-content;
 }
 
-.header__logo {
-  /* TODO: Scale logo */
-}
-
 .header__images {
   display: flex;
   justify-content: center; 
   padding: var(--space-md) var(--space-xxl) var(--space-sm);
-  /* position: relative; */
-  /* background-color: black; */
-  /* height: 300px; */
-  /* width: 100%; */
 }
 
 .header__images__bg {
