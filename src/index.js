@@ -21,11 +21,11 @@ async function displayBroths() {
     const label = document.createElement("label");
     const labelContent = `
       <input type='radio' name='broth' value='${broth.id}'>
-      <div class="broth__option">
-      <img src='${broth.imageInactive}' alt='${broth.name}'>
-      <h3>${broth.name}</h3>
-      <p>${broth.description}</p>
-      <p>$${broth.price}</p>
+      <div class="condiment__option">
+      <img class='condiment__option__img' src='${broth.imageInactive}' alt='${broth.name}'>
+      <h3 class='condiment__option__name'>${broth.name}</h3>
+      <p class='condiment__option__desc'>${broth.description}</p>
+      <p class='condiment__option__price'>U$${broth.price}</p>
       </div>
     `
     label.innerHTML = labelContent;
@@ -41,16 +41,17 @@ async function displayProteins() {
     label = document.createElement("label");
     labelContent = `
       <input type='radio' name='protein' value='${protein.id}'>
-      <div class="protein__option">
-      <img src='${protein.imageInactive}' alt='${protein.name}'>
-      <h3>${protein.name}</h3>
-      <p>${protein.description}</p>
-      <p>$${protein.price}</p>
+      <div class="condiment__option">
+      <img src='${protein.imageInactive}' alt='${protein.name}' class='condiment__option__img'>
+      <h3 class='condiment__option__name'>${protein.name}</h3>
+      <p class='condiment__option__desc'>${protein.description}</p>
+      <p class='condiment__option__price'>$${protein.price}</p>
       </div>
     `
     label.innerHTML = labelContent;
     return label
     })
+  
   proteinsOptions.forEach(option => proteinsDiv.appendChild(option));
 }
 
