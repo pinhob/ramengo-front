@@ -134,6 +134,27 @@ fieldset > p {
 }
 
 
+
+/* STYLE CONDIMENTS OPTIONS*/
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+[type=radio]:checked + .broth__option {
+  outline: 2px solid #f00;
+}
+
+[type=radio]:checked + .protein__option {
+  outline: 2px solid #f00;
+}
+
 @media (min-width: 768px) {
   .header__wrapper__logo {
     margin: 0 var(--space-xl);
