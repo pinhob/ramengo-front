@@ -77,6 +77,14 @@ document.querySelector(".condiments").addEventListener('click', function (event)
   }
 });
 
+function createOrderLocalSession(data) {
+  sessionStorage.setItem("orderDetails", JSON.stringify(data));
+}
+
+function redirectToOrderPage() {
+  window.location.href = "order.html";
+}
+
 async function validateForm() {
   event.preventDefault();
 
@@ -102,9 +110,9 @@ async function validateForm() {
   const response = await request.json();
 
   console.log("res: ", response);
-  sessionStorage.setItem("orderDetails", JSON.stringify(response));
 
-  window.location.href = "order.html";
+  createOrderLocalSession(response);
+  redirectToOrderPage();
 }
 
 /*

@@ -1,0 +1,10 @@
+.header {
+  background-color: var(--c-blue);
+  background-image: url('../assets/pattern-azul.svg');
+}
+
+
+/* based on StackOverflow answer: https://stackoverflow.com/a/53336754 */
+.header__logo__img {
+  filter: invert(43%) sepia(10%) saturate(6028%) hue-rotate(325deg) brightness(101%) contrast(106%);
+}
