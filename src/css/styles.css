@@ -196,12 +196,20 @@ fieldset > p {
   cursor: pointer;
 }
 
-[type=radio]:checked + .broth__option {
-  outline: 2px solid #f00;
+[type=radio]:checked + .condiment__option {
+  background-color: var(--c-blue);
 }
 
-[type=radio]:checked + .protein__option {
-  outline: 2px solid #f00;
+[type=radio]:checked + .condiment__option > .condiment__option__name {
+  color: var(--c-white);
+}
+
+[type=radio]:checked + .condiment__option > .condiment__option__desc {
+  color: var(--c-white);
+}
+
+[type=radio]:checked + .condiment__option > .condiment__option__price {
+  color: var(--c-yellow);
 }
 
 @media (min-width: 768px) {
