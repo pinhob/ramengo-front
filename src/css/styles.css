@@ -159,6 +159,13 @@ fieldset > p {
   font-weight: var(--f-black);
 }
 
+.arrow {
+  font-size: 1.5rem;
+  margin-left: var(--space-mmd);
+  color: var(--c-yellow);
+}
+
+
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -167,15 +174,21 @@ fieldset > p {
   background-color: var(--c-blue);
   color: var(--c-white);
   text-transform: uppercase;
-  font-weight: var(--f-black);
+  font-weight: var(--f-extra-bold);
   padding: var(--space-sm);
   line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.arrow {
-  font-size: 1.5rem;
-  margin-left: var(--space-mmd);
-  color: var(--c-yellow);
+.button:disabled {
+  background-color: var(--c-gray);
+}
+
+
+.button:disabled > span {
+  color: var(--c-white);
 }
 
 .form__button {
