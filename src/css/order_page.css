@@ -2,8 +2,10 @@
   background-color: var(--c-blue);
   background-image: url('../assets/pattern-azul.svg');
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 
 /* based on StackOverflow answer: https://stackoverflow.com/a/53336754 */
 .header__logo__img {
@@ -55,4 +57,31 @@
 .btn__new-order {
   margin-top: var(--space-md);
   margin-bottom: var(--space-xxxl);
+}
+
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header {
+    flex-basis: 50%;
+  }
+
+  .infos {
+    justify-content: center;
+    flex-basis: 50%;
+  }
+  
+  
+  .header__wrapper__logo {
+    align-self: flex-start;
+  }
+
+
+  .header__order {
+    margin: auto;
+  }  
 }
