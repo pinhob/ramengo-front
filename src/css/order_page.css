@@ -1,12 +1,22 @@
 .header {
   background-color: var(--c-blue);
   background-image: url('../assets/pattern-azul.svg');
+  text-align: center;
 }
 
 
 /* based on StackOverflow answer: https://stackoverflow.com/a/53336754 */
 .header__logo__img {
   filter: invert(43%) sepia(10%) saturate(6028%) hue-rotate(325deg) brightness(101%) contrast(106%);
+}
+
+.header__order__img {
+  margin-top: var(--space-xxxl);
+}
+
+.header__order__name {
+  margin-top: var(--space-m);
+  margin-bottom: 100px;
 }
 
 .infos {
@@ -20,6 +30,7 @@
 
 .infos__illustration {
   margin-top: var(--space-xxxl);
+  width: 66px;
 
 }
 

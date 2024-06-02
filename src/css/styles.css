@@ -182,6 +182,17 @@ fieldset > p {
   margin-top: var(--space-xxl)
 }
 
+.yellow__title {
+  font-size: 1.5rem;
+  color: var(--c-yellow);
+  font-weight: var(--f-black);
+}
+
+.white__title {
+  font-size: 1.25rem;
+  color: var(--c-white);
+  font-weight: var(--f-black);
+}
 
 
 /* STYLE CONDIMENTS OPTIONS*/
