@@ -3,9 +3,6 @@ const proteinsDiv = document.querySelector("#proteins");
 const proteinsData = [];
 const brothsData = [];
 
-
-// TODO: Criar função getCondiments que recebe o tipo de condimento e retorna os condimentos daquele tipo
-
 async function getBroths() {
   const response = await fetch("http://localhost:8080/broths");
   const broths = await response.json();
@@ -73,13 +70,42 @@ document.querySelector(".condiments").addEventListener('click', function (event)
     for (const child of optionDiv.children) {
       if (child.tagName === 'IMG') {
         if (child.src.includes("inactive")) {
-          console.log("inactive");
           child.src = child.src.replace("inactive", "active");
           }
         }
       }
   }
 });
+
+async function validateForm() {
+  event.preventDefault();
+
+  const selectedBroth = document.querySelector('input[name="broth"]:checked');
+  const selectedProtein = document.querySelector('input[name="protein"]:checked');
+
+  console.log(selectedBroth.value, selectedProtein.value);
+
+  const reqBody = JSON.stringify({
+    "brothId": selectedBroth.value,
+    "proteinId": selectedProtein.value
+  });
+
+  const request = await fetch("http://localhost:8080/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
+    },
+    body: reqBody
+  });
+
+  const response = await request.json();
+
+  console.log("res: ", response);
+  sessionStorage.setItem("orderDetails", JSON.stringify(response));
+
+  window.location.href = "order.html";
+}
 
 /*
 Criar evento de envio do formulário e pegar os valores escolhidos nele para fazer o pedido
