@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RamenGo | You made your order!</title>
+  <link rel="stylesheet" href="./src/css/reset.css">
+  <link rel="stylesheet" href="./src/css/variables.css">
   <link rel="stylesheet" href="./src/css/styles.css">
   <link rel="stylesheet" href="./src/css/order_page.css">
 </head>
 
 <body>
-  <section class="header">
+  <main class="header">
     <header class="header__wrapper__logo">
       <a href="#" class="header__logo">
         <img src="./src/assets/logo.svg" alt="ramenGo logo" class="header__logo__img">
@@ -22,15 +24,15 @@
       <p>Your order:</p>
       <h2 class="header__order__name"></h2>
     </article>
-  </section>
-
-  <main>
-    <img src="src/assets/bowing.svg" alt="">
-    <p>どもありがとうございます</p>
-    <h3>Your order is being prepared</h3>
-    <p>Hold on, when you least expect you will be eating your rámen. </p>
-    <button>Place new order</button>
   </main>
+
+  <section class="infos">
+    <img src="src/assets/bowing.svg" alt="" class="infos__illustration">
+    <p class="infos__msg jpn">どもありがとうございます。</p>
+    <h3 class="infos__msg">Your order is being prepared</h3>
+    <p class="infos__desc">Hold on, when you least expect you will be eating your rámen. </p>
+    <button class="button btn__new-order">Place new order <span class="arrow">→</span></button>
+  </section>
 </body>
 
 

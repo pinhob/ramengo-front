@@ -167,7 +167,7 @@ fieldset > p {
   background-color: var(--c-blue);
   color: var(--c-white);
   text-transform: uppercase;
-  font-weight: var(--f-medium);
+  font-weight: var(--f-black);
   padding: var(--space-sm);
   line-height: 1.5;
 }

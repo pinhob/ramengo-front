@@ -8,3 +8,40 @@
 .header__logo__img {
   filter: invert(43%) sepia(10%) saturate(6028%) hue-rotate(325deg) brightness(101%) contrast(106%);
 }
+
+.infos {
+  background-color: var(--c-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 var(--space-m);
+  text-align: center;
+}
+
+.infos__illustration {
+  margin-top: var(--space-xxxl);
+
+}
+
+.infos__msg {
+  margin-top: var(--space-m);
+  color: var(--c-red);
+  font-size: 1.5rem;
+  font-weight: var(--f-black);
+  line-height: 1.5;
+}
+
+.jpn {
+  color: var(--c-yellow);
+  font-size: 1.25rem;
+}
+
+.infos__desc {
+  margin-top: var(--space-md);
+  font-weight: var(--f-medium);
+}
+
+.btn__new-order {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xxxl);
+}
