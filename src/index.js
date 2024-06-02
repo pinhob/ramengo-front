@@ -1,5 +1,6 @@
 const brothsDiv = document.querySelector("#broths");
 const proteinsDiv = document.querySelector("#proteins");
+const condiments = document.querySelectorAll(".condiments");
 const proteinsData = [];
 const brothsData = [];
 
@@ -64,18 +65,32 @@ displayBroths();
 displayProteins();
 
 // TODO: change the image of the selected condiment. need refactor
-document.querySelector(".condiments").addEventListener('click', function (event) {
-  if (event.target && event.target.matches("input[type='radio']")) {
-    const optionDiv = event.target.nextElementSibling;
-    for (const child of optionDiv.children) {
-      if (child.tagName === 'IMG') {
-        if (child.src.includes("inactive")) {
-          child.src = child.src.replace("inactive", "active");
+for (let i = 0; i < condiments.length; i++) {
+  condiments[i].addEventListener('click', function (event) {
+    handleButtonState();
+
+    if (event.target && event.target.matches("input[type='radio']")) {
+      const optionDiv = event.target.nextElementSibling;
+      for (const child of optionDiv.children) {
+        if (child.tagName === 'IMG') {
+          if (child.src.includes("inactive")) {
+            child.src = child.src.replace("inactive", "active");
+            }
           }
         }
-      }
+    }
+  });
+}
+
+// quando usuário clica em um dos condimentos, deve checar se os dois condimentos foram selecionados e habilitar o botão de fazer pedido
+function handleButtonState() {
+  const selectedBroth = document.querySelector('input[name="broth"]:checked');
+const selectedProtein = document.querySelector('input[name="protein"]:checked');
+
+  if (selectedBroth?.value && selectedProtein?.value) {
+    document.querySelector(".form__button").disabled = false;
   }
-});
+}
 
 function createOrderLocalSession(data) {
   sessionStorage.setItem("orderDetails", JSON.stringify(data));
@@ -89,7 +104,7 @@ async function validateForm() {
   event.preventDefault();
 
   const selectedBroth = document.querySelector('input[name="broth"]:checked');
-  const selectedProtein = document.querySelector('input[name="protein"]:checked');
+const selectedProtein = document.querySelector('input[name="protein"]:checked');
 
   console.log(selectedBroth.value, selectedProtein.value);
 
