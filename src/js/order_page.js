@@ -8,3 +8,8 @@ if (orderDetails) {
   orderImg.src = JSON.parse(orderDetails).image;
   orderName.innerText = JSON.parse(orderDetails).description;
 }
+
+function handleNewOrderButton() {
+  sessionStorage.removeItem("orderDetails");
+  window.location.href = "index.html";   
+}

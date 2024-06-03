@@ -64,9 +64,7 @@ async function displayProteins() {
 displayBroths();
 displayProteins();
 
-
 function handleCtaButtonClick() {
-  console.log("cta button clicked", document.querySelector(".condiment__option"))
   document.querySelector(".condiment__label").focus();
 }
 
