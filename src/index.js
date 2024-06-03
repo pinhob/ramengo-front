@@ -54,6 +54,7 @@ async function displayProteins() {
       <p class='condiment__option__price'>$${protein.price}</p>
       </div>
     `
+    label.className = "condiment__label";
     label.innerHTML = labelContent;
     return label
     })
