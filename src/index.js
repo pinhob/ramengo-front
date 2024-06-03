@@ -4,8 +4,10 @@ const condiments = document.querySelectorAll(".condiments");
 const proteinsData = [];
 const brothsData = [];
 
+const API_URL = "http://34.207.182.179:8080";
+
 async function getBroths() {
-  const response = await fetch("http://localhost:8080/broths", {
+  const response = await fetch(`${API_URL}/broths`, {
     headers: {
       "Content-Type": "application/json",
       "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
@@ -17,7 +19,7 @@ async function getBroths() {
 }
 
 async function getProteins() {
-  const response = await fetch("http://localhost:8080/proteins", {
+  const response = await fetch(`${API_URL}/proteins`, {
     headers: {
       "Content-Type": "application/json",
       "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
@@ -138,7 +140,7 @@ const selectedProtein = document.querySelector('input[name="protein"]:checked');
     "proteinId": selectedProtein.value
   });
 
-  const request = await fetch("http://localhost:8080/orders", {
+  const request = await fetch(`${API_URL}/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
