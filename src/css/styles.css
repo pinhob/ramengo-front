@@ -138,6 +138,7 @@ fieldset > p {
   align-items: center;
   width: 288px;
   max-width: 320px;
+  pointer-events: none;
 }
 
 .condiment__option > img {
