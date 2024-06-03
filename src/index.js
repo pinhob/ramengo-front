@@ -5,14 +5,24 @@ const proteinsData = [];
 const brothsData = [];
 
 async function getBroths() {
-  const response = await fetch("http://localhost:8080/broths");
+  const response = await fetch("http://localhost:8080/broths", {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
+    }
+  });
   const broths = await response.json();
   brothsData.push(...broths); 
   return broths;
 }
 
 async function getProteins() {
-  const response = await fetch("http://localhost:8080/proteins");
+  const response = await fetch("http://localhost:8080/proteins", {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
+    },
+  });
   const proteins = await response.json();
   proteinsData.push(...proteins);
   return proteins;
