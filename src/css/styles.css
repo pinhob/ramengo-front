@@ -128,6 +128,11 @@ fieldset > p {
   width: calc(100vw - var(--space-m));
 }
 
+.condiment__label {
+  cursor: pointer;
+}
+
+
 .condiment__label:focus-within {
   border: 2px solid var(--c-blue);
   border-radius: 8px;
@@ -241,6 +246,7 @@ fieldset > p {
 }
 
 [type=radio]:checked + .condiment__option {
+  transition: ease-in-out 0.3s;
   background-color: var(--c-blue);
 }
 
