@@ -79,10 +79,20 @@ for (let i = 0; i < condiments.length; i++) {
           }
         }
     }
+
+    for (const child of condiments[i].children) {
+      const isOptionSelected = child.childNodes[1].checked;
+      let imageChildValue = child.childNodes[3].getElementsByTagName("img")[0].src;
+      const imageHasActive = new RegExp(/\bactive\b/).test(imageChildValue);
+      
+      if (!isOptionSelected && imageHasActive) {
+        child.childNodes[3].getElementsByTagName("img")[0].src = imageChildValue.replace("active", "inactive");
+      }
+    }
   });
 }
 
-// quando usuário clica em um dos condimentos, deve checar se os dois condimentos foram selecionados e habilitar o botão de fazer pedido
+// TODO: substituir explicação por JSDoc. quando usuário clica em um dos condimentos, deve checar se os dois condimentos foram selecionados e habilitar o botão de fazer pedido
 function handleButtonState() {
   const selectedBroth = document.querySelector('input[name="broth"]:checked');
 const selectedProtein = document.querySelector('input[name="protein"]:checked');
