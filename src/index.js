@@ -64,6 +64,12 @@ async function displayProteins() {
 displayBroths();
 displayProteins();
 
+
+function handleCtaButtonClick() {
+  console.log("cta button clicked", document.querySelector(".condiment__option"))
+  document.querySelector(".condiment__label").focus();
+}
+
 // TODO: change the image of the selected condiment. need refactor
 for (let i = 0; i < condiments.length; i++) {
   condiments[i].addEventListener('click', function (event) {
