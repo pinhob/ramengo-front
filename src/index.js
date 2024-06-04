@@ -1,12 +1,22 @@
 const BROTHS_FORM_DIV = document.querySelector("#broths");
 const PROTEINS_FORM_DIV = document.querySelector("#proteins");
 const CONDIMENTS = document.querySelectorAll(".condiments");
+const FORM = document.getElementsByTagName("form")[0];
 
 const API_URL = "http://localhost:8080";
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 
+/* handle errors */
+function createErrorElement(message) {
+  const errorElement = document.createElement("p");
+  errorElement.className = "error";
+  errorElement.innerText = message;
+  return errorElement;
+}
+
 /* get condiments */
 async function getCondimentsByType(condiment) {
+try {
   const response = await fetch(`${API_URL}/${condiment}`, {
     headers: {
       "Content-Type": "application/json",
@@ -14,19 +24,27 @@ async function getCondimentsByType(condiment) {
     }
   });
 
+  if (!response.ok) {
+    throw new Error(`Error getting the condiments! Status: ${response.status}`);
+  }
+
   const condiments = await response.json();
 
   return condiments;
+} catch (error) {
+  const errorElement = createErrorElement("⚠️\n Oh, no! Our chefs had a problem and we cannot get the condiments.\n Please, try again later.");
+  FORM.innerHTML = errorElement.outerHTML;
+}
 }
 
 async function getBroths() {
-  const broths = await getCondimentsByType("broths");
-  return broths;
+    const broths = await getCondimentsByType("broths");
+    return broths;
 }
 
 async function getProteins() {
   const proteins = await getCondimentsByType("proteins");
-  return proteins;
+  return proteins; 
 }
 
 /* display condiments */
