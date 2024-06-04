@@ -82,7 +82,7 @@ form > * {
   border: none;
 }
 
-.condiments__wrapper legend {
+.condiments__wrapper > legend {
   font-size: 1.5rem;
   font-weight: var(--f-black);
   margin-bottom: var(--space-m);
@@ -188,6 +188,11 @@ form > * {
     padding-bottom: 100px;
   }
 
+  .header__wrapper {
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+    
   .header__wrapper__logo {
     margin: 0 var(--space-xl);
     padding-top: var(--space-xl);
@@ -259,14 +264,19 @@ form > * {
   }
 
   form {
-    padding-top: var(--space-xxxl);
+    padding-top: var(--space-xxxxl);
   }
 
   .condiments {
     justify-content: center;
+    gap: var(--space-xxxl);
   }
 
+  .condiments__wrapper > legend {
+    font-size: 2rem;
+  }
+  
   .condiments__wrapper > p {
-  margin-bottom: var(--space-xxl);
+    margin-bottom: var(--space-xxl);
   }
 }
