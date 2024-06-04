@@ -1,124 +1,116 @@
 const brothsDiv = document.querySelector("#broths");
 const proteinsDiv = document.querySelector("#proteins");
 const condiments = document.querySelectorAll(".condiments");
-const proteinsData = [];
-const brothsData = [];
 
-const API_URL = "http://34.207.182.179:8080";
+const API_URL = "http://localhost:8080";
+const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 
-async function getBroths() {
-  const response = await fetch(`${API_URL}/broths`, {
+
+/* get condiments */
+async function getCondimentsByType(condiment) {
+  const response = await fetch(`${API_URL}/${condiment}`, {
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
+      "x-api-key": API_KEY
     }
   });
-  const broths = await response.json();
-  brothsData.push(...broths); 
+
+  const condiments = await response.json();
+
+  return condiments;
+}
+
+async function getBroths() {
+  const broths = await getCondimentsByType("broths");
   return broths;
 }
 
 async function getProteins() {
-  const response = await fetch(`${API_URL}/proteins`, {
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
-    },
-  });
-  const proteins = await response.json();
-  proteinsData.push(...proteins);
+  const proteins = await getCondimentsByType("proteins");
   return proteins;
+}
+
+/* display condiments */
+function createCondimentDataElement(condimentType, data) {
+  return `
+  <input type='radio' name='${condimentType}' value='${data.id}'>
+  <div class='condiment__option ${condimentType}-${data.id}'>
+  <img class='condiment__option__img' src='${data.imageInactive}' alt='${data.name}'>
+  <h3 class='condiment__option__name'>${data.name}</h3>
+  <p class='condiment__option__desc'>${data.description}</p>
+  <p class='condiment__option__price'>U$${data.price}</p>
+  </div>
+  `
+}
+
+function createCondimentOptionElement(condimentType, data) {
+  const condiment = document.createElement("label");
+  const condimentContent = createCondimentDataElement(condimentType, data);
+  condiment.className = "condiment__label";
+  condiment.innerHTML = condimentContent;
+  return condiment
 }
 
 
 async function displayBroths() {
   broths = await getBroths();
-  brothsOptions = broths.map(broth => 
-    {
-    const label = document.createElement("label");
-    const labelContent = `
-      <input type='radio' name='broth' value='${broth.id}'>
-      <div class='condiment__option broth-${broth.id}'>
-      <img class='condiment__option__img' src='${broth.imageInactive}' alt='${broth.name}'>
-      <h3 class='condiment__option__name'>${broth.name}</h3>
-      <p class='condiment__option__desc'>${broth.description}</p>
-      <p class='condiment__option__price'>U$${broth.price}</p>
-      </div>
-    `
-    label.className = "condiment__label";
-    label.innerHTML = labelContent;
-    return label
-    })
+  brothsOptions = broths.map(brothData => createCondimentOptionElement("broth", brothData))
   brothsOptions.forEach(option => brothsDiv.appendChild(option));
 }
 
 async function displayProteins() {
   const proteins = await getProteins();
-  const proteinsOptions = proteins.map(protein => 
-    {
-    label = document.createElement("label");
-    labelContent = `
-      <input type='radio' name='protein' value='${protein.id}'>
-      <div class="condiment__option">
-      <img src='${protein.imageInactive}' alt='${protein.name}' class='condiment__option__img'>
-      <h3 class='condiment__option__name'>${protein.name}</h3>
-      <p class='condiment__option__desc'>${protein.description}</p>
-      <p class='condiment__option__price'>$${protein.price}</p>
-      </div>
-    `
-    label.className = "condiment__label";
-    label.innerHTML = labelContent;
-    return label
-    })
-  
+  const proteinsOptions = proteins.map(protein => createCondimentOptionElement("protein", protein));
   proteinsOptions.forEach(option => proteinsDiv.appendChild(option));
-  }
+}
 
-displayBroths();
-displayProteins();
-
+/* handle interaction with inputs */
 function handleCtaButtonClick() {
   document.querySelector(".condiment__label").focus();
 }
 
-// TODO: change the image of the selected condiment. need refactor
-for (let i = 0; i < condiments.length; i++) {
-  condiments[i].addEventListener('click', function (event) {
-    handleButtonState();
-
-    if (event.target && event.target.matches("input[type='radio']")) {
-      const optionDiv = event.target.nextElementSibling;
-      for (const child of optionDiv.children) {
-        if (child.tagName === 'IMG') {
-          if (child.src.includes("inactive")) {
-            child.src = child.src.replace("inactive", "active");
-            }
-          }
-        }
-    }
-
-    for (const child of condiments[i].children) {
-      const isOptionSelected = child.childNodes[1].checked;
-      let imageChildValue = child.childNodes[3].getElementsByTagName("img")[0].src;
-      const imageHasActive = new RegExp(/\bactive\b/).test(imageChildValue);
-      
-      if (!isOptionSelected && imageHasActive) {
-        child.childNodes[3].getElementsByTagName("img")[0].src = imageChildValue.replace("active", "inactive");
-      }
-    }
-  });
-}
-
-// TODO: substituir explicação por JSDoc. quando usuário clica em um dos condimentos, deve checar se os dois condimentos foram selecionados e habilitar o botão de fazer pedido
-function handleButtonState() {
+function handleSubmitButtonState() {
   const selectedBroth = document.querySelector('input[name="broth"]:checked');
-const selectedProtein = document.querySelector('input[name="protein"]:checked');
+  const selectedProtein = document.querySelector('input[name="protein"]:checked');
 
   if (selectedBroth?.value && selectedProtein?.value) {
     document.querySelector(".form__button").disabled = false;
   }
 }
 
+function handleOptionImageState(child) {
+    const radioInput = child.childNodes[1];
+    const imageElement = child.childNodes[3].getElementsByTagName("img")[0];
+    const isOptionSelected = radioInput.checked;
+    let imageSrcUrl = imageElement.src;
+    const imageIsActive = new RegExp(/\bactive\b/).test(imageSrcUrl);
+    
+
+    if (isOptionSelected && !imageIsActive) {
+      imageElement.src = imageSrcUrl.replace("inactive", "active");
+    }
+
+    if (!isOptionSelected && imageIsActive) {
+      imageElement.src = imageSrcUrl.replace("active", "inactive");
+    }
+}
+
+// Add a click event handler to every option of broths and proteins.Handle the option image state and the submit button state.
+function handleCondimentSelection() {
+  for (let i = 0; i < condiments.length; i++) {
+    const condimentOptions = condiments[i];
+
+    condimentOptions.addEventListener('click', () => {
+      handleSubmitButtonState();
+
+      for (const child of condiments[i].children) {
+        handleOptionImageState(child);
+      }
+    });
+  }
+}
+
+/* handle order form submission */
 function createOrderLocalSession(data) {
   sessionStorage.setItem("orderDetails", JSON.stringify(data));
 }
@@ -127,15 +119,13 @@ function redirectToOrderPage() {
   window.location.href = "order.html";
 }
 
-async function validateForm() {
+async function createOrder() {
   event.preventDefault();
 
   const selectedBroth = document.querySelector('input[name="broth"]:checked');
-const selectedProtein = document.querySelector('input[name="protein"]:checked');
+  const selectedProtein = document.querySelector('input[name="protein"]:checked');
 
-  console.log(selectedBroth.value, selectedProtein.value);
-
-  const reqBody = JSON.stringify({
+  const requestBody = JSON.stringify({
     "brothId": selectedBroth.value,
     "proteinId": selectedProtein.value
   });
@@ -144,19 +134,18 @@ const selectedProtein = document.querySelector('input[name="protein"]:checked');
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf"
+      "x-api-key": API_KEY
     },
-    body: reqBody
+    body: requestBody
   });
 
   const response = await request.json();
-
-  console.log("res: ", response);
 
   createOrderLocalSession(response);
   redirectToOrderPage();
 }
 
-/*
-Criar evento de envio do formulário e pegar os valores escolhidos nele para fazer o pedido
-*/
+/* call functions */
+displayBroths();
+displayProteins();
+handleCondimentSelection();
