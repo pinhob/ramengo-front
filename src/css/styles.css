@@ -44,6 +44,20 @@ body {
   margin-left: var(--space-mmd);
 }
 
+.button:hover {
+  background-color: var(--c-medium-blue);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover > .arrow {
+  transform: translateX(5px) scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:active {
+  background-color: var(--c-dark-blue);
+}
+
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -71,7 +85,6 @@ body {
 .button:disabled > span {
   color: var(--c-white);
 }
-
 
 @media (min-width: 1024px) {
   .header {

@@ -24,6 +24,8 @@
 }
 
 .header__images__blue_balloon {
+  animation: MoveUpDown 5s ease infinite;
+  animation-delay: 400ms;
   position: absolute;
   left: 30px;
   top: 10px;
@@ -36,6 +38,7 @@
 }
 
 .header__images__yellow_balloon {
+  animation: MoveUpDown 5s ease infinite;
   position: absolute;
   top: 38%;
   right: 30px;
@@ -278,5 +281,15 @@ form > * {
   
   .condiments__wrapper > p {
     margin-bottom: var(--space-xxl);
+  }
+}
+
+/* ANIMATIONS */
+@keyframes MoveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
