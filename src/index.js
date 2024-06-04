@@ -1,6 +1,6 @@
-const brothsDiv = document.querySelector("#broths");
-const proteinsDiv = document.querySelector("#proteins");
-const condiments = document.querySelectorAll(".condiments");
+const BROTHS_FORM_DIV = document.querySelector("#broths");
+const PROTEINS_FORM_DIV = document.querySelector("#proteins");
+const CONDIMENTS = document.querySelectorAll(".condiments");
 
 const API_URL = "http://localhost:8080";
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
@@ -55,13 +55,13 @@ function createCondimentOptionElement(condimentType, data) {
 async function displayBroths() {
   broths = await getBroths();
   brothsOptions = broths.map(brothData => createCondimentOptionElement("broth", brothData))
-  brothsOptions.forEach(option => brothsDiv.appendChild(option));
+  brothsOptions.forEach(option => BROTHS_FORM_DIV.appendChild(option));
 }
 
 async function displayProteins() {
   const proteins = await getProteins();
   const proteinsOptions = proteins.map(protein => createCondimentOptionElement("protein", protein));
-  proteinsOptions.forEach(option => proteinsDiv.appendChild(option));
+  proteinsOptions.forEach(option => PROTEINS_FORM_DIV.appendChild(option));
 }
 
 /* handle interaction with inputs */
@@ -97,13 +97,13 @@ function handleOptionImageState(child) {
 
 // Add a click event handler to every option of broths and proteins.Handle the option image state and the submit button state.
 function handleCondimentSelection() {
-  for (let i = 0; i < condiments.length; i++) {
-    const condimentOptions = condiments[i];
+  for (let i = 0; i < CONDIMENTS.length; i++) {
+    const condimentOptions = CONDIMENTS[i];
 
     condimentOptions.addEventListener('click', () => {
       handleSubmitButtonState();
 
-      for (const child of condiments[i].children) {
+      for (const child of CONDIMENTS[i].children) {
         handleOptionImageState(child);
       }
     });

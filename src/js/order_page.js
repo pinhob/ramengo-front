@@ -1,12 +1,10 @@
-const orderDetails = sessionStorage.getItem("orderDetails");
-const orderImg = document.querySelector(".header__order__img");
-const orderName = document.querySelector(".header__order__name");
+const ORDER_DETAILS = sessionStorage.getItem("orderDetails");
+const ORDER_IMG = document.querySelector(".header__order__img");
+const ORDER_NAME = document.querySelector(".header__order__name");
 
-console.log("hello", orderDetails);
-
-if (orderDetails) {
-  orderImg.src = JSON.parse(orderDetails).image;
-  orderName.innerText = JSON.parse(orderDetails).description;
+if (ORDER_DETAILS) {
+  ORDER_IMG.src = JSON.parse(ORDER_DETAILS).image;
+  ORDER_NAME.innerText = JSON.parse(ORDER_DETAILS).description;
 }
 
 function handleNewOrderButton() {
