@@ -3,7 +3,7 @@
 .header {
   align-items: center;
   background-color: var(--c-blue);
-  background-image: url('../assets/pattern-azul.svg');
+  background-image: url('../../assets/pattern-azul.svg');
   display: flex;
   flex-direction: column;
   text-align: center;
