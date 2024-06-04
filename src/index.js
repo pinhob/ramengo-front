@@ -5,7 +5,6 @@ const CONDIMENTS = document.querySelectorAll(".condiments");
 const API_URL = "http://localhost:8080";
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 
-
 /* get condiments */
 async function getCondimentsByType(condiment) {
   const response = await fetch(`${API_URL}/${condiment}`, {
@@ -47,10 +46,10 @@ function createCondimentOptionElement(condimentType, data) {
   const condiment = document.createElement("label");
   const condimentContent = createCondimentDataElement(condimentType, data);
   condiment.className = "condiment__label";
+  condiment.tabIndex = 0;
   condiment.innerHTML = condimentContent;
   return condiment
 }
-
 
 async function displayBroths() {
   broths = await getBroths();
