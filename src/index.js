@@ -2,6 +2,7 @@ const BROTHS_FORM_DIV = document.querySelector("#broths");
 const PROTEINS_FORM_DIV = document.querySelector("#proteins");
 const CONDIMENTS = document.querySelectorAll(".condiments");
 const FORM = document.getElementsByTagName("form")[0];
+const FORM_BUTTON = document.querySelector(".form__button");
 
 const API_URL = "http://localhost:8080";
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
@@ -91,7 +92,7 @@ function handleSubmitButtonState() {
   const selectedProtein = document.querySelector('input[name="protein"]:checked');
 
   if (selectedBroth?.value && selectedProtein?.value) {
-    document.querySelector(".form__button").disabled = false;
+    FORM_BUTTON.disabled = false;
   }
 }
 
@@ -136,7 +137,27 @@ function redirectToOrderPage() {
   window.location.href = "order.html";
 }
 
-async function createOrder() {
+async function createOrder(requestBody) {
+  try {
+    const request = await fetch(`${API_URL}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
+      },
+      body: requestBody
+    });
+  
+    const response = await request.json();
+    return response;
+  } catch (error) {
+    const errorElement = createErrorElement("⚠️\n Sorry! We had a problem creating your order.\n Please, try again later.");
+    FORM.insertBefore(errorElement, FORM_BUTTON);
+    return ;
+  }
+}
+
+async function handleFormSubmit() {
   event.preventDefault();
 
   const selectedBroth = document.querySelector('input[name="broth"]:checked');
@@ -147,19 +168,12 @@ async function createOrder() {
     "proteinId": selectedProtein.value
   });
 
-  const request = await fetch(`${API_URL}/orders`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-api-key": API_KEY
-    },
-    body: requestBody
-  });
-
-  const response = await request.json();
-
-  createOrderLocalSession(response);
-  redirectToOrderPage();
+  const order = await createOrder(requestBody);
+  
+  if (order) {
+    createOrderLocalSession(order);
+    redirectToOrderPage();
+  }
 }
 
 /* call functions */

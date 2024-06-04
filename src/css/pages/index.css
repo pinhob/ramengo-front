@@ -81,16 +81,6 @@ form > * {
   margin: 0;
 }
 
-.error {
-  background-color: var(--c-red);
-  border-radius: 8px;
-  color: var(--c-white);
-  font-size: 1.25rem;
-  font-weight: var(--f-extra-bold);
-  width: 60%;
-  padding: var(--space-lg);
-}
-
 .condiments__wrapper {
   border: none;
 }
