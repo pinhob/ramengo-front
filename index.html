@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="./src/css/reset.css">
   <link rel="stylesheet" href="./src/css/variables.css">
   <link rel="stylesheet" href="./src/css/styles.css">
+  <link rel="stylesheet" href="./src/css/index_page.css">
 </head>
 
 <body>
@@ -23,33 +24,32 @@
     </header>
 
     <section class="header__data">
-      <section class="header__images">
-        <div class="header__images__bg">
+      <div class="header__images">
+        <div class="header__images__ellipsis">
         </div>
         <img src="./src/assets/balao-azul.svg" alt="Blue Balloon" class="header__images__blue_balloon">
         <img src="./src/assets/entregadora.svg" alt="Character" class="header__images__character">
         <img src="./src/assets/balao-amarelo.svg" alt="Yellow Balloon" class="header__images__yellow_balloon">
-      </section>
-      <section class="header__cta">
-        <h2 class="header__cta__title--yellow">ラ l メ ン</h2>
-        <h2 class="header__cta__title--white">Go!</h2>
+      </div>
+      <div class="header__cta">
+        <h2 class="yellow__title cta__jpn_title">ラ l メ ン</h2>
+        <h2 class="white__title cta__title">Go!</h2>
         <p class="header__cta__text">Enjoy a good ramen in the comfort of your house. Create your own ramen and choose
-          your favorite flavour
-          combination!</p>
+          your favorite flavour combination!</p>
         <button class="button header__cta__button" onClick="handleCtaButtonClick()">Order now <span
             class="arrow">→</span></button>
-      </section>
+      </div>
     </section>
   </section>
 
-  <main>
+  <main class="wrapper--white">
     <form onsubmit="return createOrder()">
-      <fieldset>
+      <fieldset class="condiments__wrapper">
         <legend>First things first: select your favorite broth.</legend>
         <p>It will give the whole flavor on your ramen soup. </p>
         <div id="broths" class="condiments form__broths"></div>
       </fieldset>
-      <fieldset class="proteins">
+      <fieldset class="condiments__wrapper proteins">
         <legend>It’s time to choose (or not) your meat!</legend>
         <p>Some people love, some don’t. We have options for all tastes.</p>
         <div id="proteins" class="condiments form__proteins"></div>

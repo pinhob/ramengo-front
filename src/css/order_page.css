@@ -1,10 +1,12 @@
+/* HEADER STYLES */
+
 .header {
+  align-items: center;
   background-color: var(--c-blue);
   background-image: url('../assets/pattern-azul.svg');
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 /* based on StackOverflow answer: https://stackoverflow.com/a/53336754 */
@@ -17,15 +19,16 @@
 }
 
 .header__order__name {
-  margin-top: var(--space-m);
   margin-bottom: 100px;
+  margin-top: var(--space-m);
 }
 
+/* SECTION INFO STYLES */
+
 .infos {
-  background-color: var(--c-white);
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 0 var(--space-m);
   text-align: center;
 }
@@ -33,15 +36,14 @@
 .infos__illustration {
   margin-top: var(--space-xxxl);
   width: 66px;
-
 }
 
 .infos__msg {
-  margin-top: var(--space-m);
   color: var(--c-red);
   font-size: 1.5rem;
   font-weight: var(--f-black);
   line-height: 1.5;
+  margin-top: var(--space-m);
 }
 
 .jpn {
@@ -50,16 +52,17 @@
 }
 
 .infos__desc {
-  margin-top: var(--space-md);
   font-weight: var(--f-medium);
+  margin-top: var(--space-md);
 }
 
 .btn__new-order {
-  margin-top: var(--space-md);
   margin-bottom: var(--space-xxxl);
+  margin-top: var(--space-md);
 }
 
 
+/* DESKTOP STYLES */
 @media (min-width: 1024px) {
   body {
     display: flex;
@@ -71,8 +74,8 @@
   }
 
   .infos {
-    justify-content: center;
     flex-basis: 50%;
+    justify-content: center;
   }
   
   
