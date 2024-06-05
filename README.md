@@ -1,6 +1,6 @@
 !["ramenGo logo"](src/assets/ramengo_header_readme.png)
 
-**Essa é o frontend da aplicação [ramenGo](http://34.207.182.179/). Você pode acessar o repositório do backend [aqui](https://github.com/pinhob/ramengo-front).**
+**Essa é o frontend da aplicação [ramenGo](http://54.234.245.214/). Você pode acessar o repositório do backend [aqui](https://github.com/pinhob/ramengo-front).**
 
 Consulte a documentação abaixo para mais informações sobre o projeto.
 
