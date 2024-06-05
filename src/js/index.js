@@ -4,7 +4,7 @@ const CONDIMENTS = document.querySelectorAll(".condiments");
 const FORM = document.getElementsByTagName("form")[0];
 const FORM_BUTTON = document.querySelector(".form__button");
 
-const API_URL = "http://localhost:8080";
+const API_URL = "http://54.234.245.214:8080";
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 
 /* handle errors */
