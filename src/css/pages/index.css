@@ -88,6 +88,7 @@ form > * {
 .condiments__wrapper > legend {
   font-size: 1.5rem;
   font-weight: var(--f-black);
+  margin: 0 auto;
   margin-bottom: var(--space-m);
   text-align: center;
 }
